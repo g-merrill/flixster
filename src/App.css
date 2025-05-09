@@ -1,4 +1,5 @@
 .App {
+  position: relative;
   text-align: center;
 }
 
@@ -27,6 +28,30 @@
   }
 }
 
+.header {
+  background: rgba(0, 0, 128, 1.0);
+  color: white;
+}
+
+.header--title {
+  margin: 0;
+  padding: 40px 0 0;
+}
+
+.header--subtitle {
+  margin: 0;
+  padding: 20px 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 128, 1.0);
+  padding: 20px 0;
+  margin: -3px 0 0;
+}
+
 .basic-btn {
   background-color: rgba(51, 51, 51, 0.05);
   border-radius: 8px;
@@ -52,6 +77,11 @@
   touch-action: manipulation;
 }
 
+.basic-btn:hover {
+  background: #000080;
+  color: white;
+}
+
 .btn-disabled {
   background-color: rgba(51, 51, 51, 0.25);
   color: rgba(51, 51, 51, 0.5);
@@ -60,23 +90,26 @@
 
 .searchbar {
   display: flex;
-  width: 100%;
+  align-items: center;
+  /* width: 100%; */
   justify-content: center;
-  margin: 0 0 20px;
+  margin: 0 20px;
 }
 
 .searchbar--text-input {
+  height: 32px;
   outline: none;
 }
 
 .searchbar--btn-search {
   margin: 0 10px 0 20px;
+  background: white;
+  border: 1px solid white;
 }
 
-.searchbar--btn-search:hover,
-.searchbar--btn-clear:hover {
-  background: navy;
-  color: white;
+.searchbar--btn-clear {
+  border: 1px solid white;
+  background: white;
 }
 
 .movie-list {
@@ -131,4 +164,123 @@
 
 .footer {
   margin: 20px 0 0;
+}
+
+.movie-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.movie-modal--visible {
+  z-index: 99;
+  opacity: 100%;
+}
+
+.movie-modal--bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.movie-modal--content {
+  position: relative;
+  display: flex;
+  height: 80%;
+  width: 70%;
+  background: white;
+  z-index: 2;
+}
+
+.movie-modal--content--img-ctnr {
+  width: 42%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.movie-modal--content--img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-modal--content--text-ctnr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 58%;
+  height: 100%;
+}
+
+.movie-modal--content--backdrop-poster {
+  width: 100%;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #808000;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content--sort-btn {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content--sort-btn:hover {
+  background-color: #ddd;
+}
+
+.dropdown-content--sort-btn--active {
+  background-color: #ddd;
+  border: 1px solid black;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #808000;
+  opacity: 1.0;
 }

@@ -4,10 +4,14 @@ import MovieList from './components/MovieList'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
+import MovieModal from './components/MovieModal'
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
+  const [modalVisible, setModalVisible] = useState(false)
+  const [modalMovie, setModalMovie] = useState(null)
+  const [sortOrder, setSortOrder] = useState('default')
 
   const authenticateSession = async () => {
     const url = `${import.meta.env.VITE_API_BASE_URL}/authentication`
@@ -31,13 +35,38 @@ const App = () => {
   }, [])
 
   const handleSearchSubmit = newSearch => {
-    console.log('firing in App.jsx')
     setSearchTerm(newSearch)
   }
 
   const clearSearch = () => {
     setSearchTerm('')
   }
+
+  const selectMovie = async movieId => {
+    const url = `${
+      import.meta.env.VITE_API_BASE_URL
+    }/movie/${movieId}?language=en-US`
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_API_READ_ACCESS_TOKEN}`,
+      },
+    }
+
+    try {
+      const res = await fetch(url, options)
+      const movie = await res.json()
+      setModalMovie(movie)
+      toggleModal()
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const toggleModal = () => setModalVisible(!modalVisible)
+
+  const sortBy = sortKey => setSortOrder(sortKey)
 
   return (
     <div className='App'>
@@ -47,8 +76,19 @@ const App = () => {
           <Navigation
             handleSearchSubmit={handleSearchSubmit}
             clearSearch={clearSearch}
+            sortBy={sortBy}
+            sortOrder={sortOrder}
           />
-          <MovieList searchTerm={searchTerm} />
+          <MovieList
+            searchTerm={searchTerm}
+            selectMovie={selectMovie}
+            sortOrder={sortOrder}
+          />
+          <MovieModal
+            modalMovie={modalMovie}
+            modalVisible={modalVisible}
+            toggleModal={toggleModal}
+          />
           <Footer />
         </>
       ) : (

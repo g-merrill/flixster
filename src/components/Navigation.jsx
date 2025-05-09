@@ -1,9 +1,19 @@
+import DropdownSorting from "./DropdownSorting"
 import Searchbar from "./Searchbar"
 
-const Navigation = ({ handleSearchSubmit, clearSearch }) => {
+const Navigation = ({
+  handleSearchSubmit,
+  clearSearch,
+  sortBy,
+  sortOrder,
+}) => {
   return (
-    <nav>
-      <Searchbar handleSearchSubmit={handleSearchSubmit} clearSearch={clearSearch} />
+    <nav className='nav'>
+      <Searchbar
+        handleSearchSubmit={handleSearchSubmit}
+        clearSearch={clearSearch}
+      />
+      <DropdownSorting sortBy={sortBy} sortOrder={sortOrder} />
     </nav>
   )
 }
