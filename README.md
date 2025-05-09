@@ -102,7 +102,11 @@ Deployed Application (**required**): [Flixster Deployed Site](https://flixster-i
 
 ### Walkthrough Video
 
-`ADD_EMBEDDED_CODE_HERE`
+<div>
+    <a href="https://www.loom.com/share/4222f471686f49d1bce433762f9c3350">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/4222f471686f49d1bce433762f9c3350-3489677dcaf7d738-full-play.gif">
+    </a>
+  </div>
 
 ### Reflection
 
