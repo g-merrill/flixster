@@ -72,18 +72,32 @@
   align-items: center;
   width: 200px;
   margin: 30px 40px;
-  padding: 12px 0;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.2);
 }
 
 .movie-card--title {
-  width: calc(100% - 2 * 15px);
-  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 2 * 16px);
+  padding: 0 16px;
+  margin: 16px 0 12px;
+  flex-grow: 1;
 }
 
 .movie-card--image {
-  width: calc(100% - 2 * 15px);
-  /* width: 100%; */
-  padding: 0 15px;
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movie-card--vote-avg {
+  margin: 0 0 16px;
 }

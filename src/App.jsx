@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import MovieList from './components/MovieList'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -15,9 +17,7 @@ const App = () => {
       },
     }
     try {
-      const res = await fetch(url, options)
-      const json = await res.json()
-      console.log(json)
+      await fetch(url, options)
       setIsAuthenticated(true)
     } catch (error) {
       console.error(error)
@@ -32,13 +32,10 @@ const App = () => {
     <div className='App'>
       {isAuthenticated ? (
         <>
-          <header>
-            <h1>Flixster</h1>
-            <p>Browse current movies!</p>
-          </header>
+          <Header />
           <nav></nav>
           <MovieList />
-          <footer></footer>
+          <Footer />
         </>
       ) : (
         <p>Please check the API authentication requests.</p>
