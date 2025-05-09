@@ -1,0 +1,10 @@
+const MovieCard = ({ movie }) => {
+  return (
+    <div className='movie-card'>
+      <p className="movie-card--title">{movie.title}</p>
+      <img className="movie-card--image" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} width={'120px'} />
+      <p className="movie-card--vote-avg">Vote Average: {movie.vote_average}</p>
+    </div>
+  )
+}
+export default MovieCard
