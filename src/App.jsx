@@ -3,9 +3,11 @@ import './App.css'
 import MovieList from './components/MovieList'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Navigation from './components/Navigation'
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
 
   const authenticateSession = async () => {
     const url = `${import.meta.env.VITE_API_BASE_URL}/authentication`
@@ -28,13 +30,25 @@ const App = () => {
     authenticateSession()
   }, [])
 
+  const handleSearchSubmit = newSearch => {
+    console.log('firing in App.jsx')
+    setSearchTerm(newSearch)
+  }
+
+  const clearSearch = () => {
+    setSearchTerm('')
+  }
+
   return (
     <div className='App'>
       {isAuthenticated ? (
         <>
           <Header />
-          <nav></nav>
-          <MovieList />
+          <Navigation
+            handleSearchSubmit={handleSearchSubmit}
+            clearSearch={clearSearch}
+          />
+          <MovieList searchTerm={searchTerm} />
           <Footer />
         </>
       ) : (
