@@ -4,7 +4,7 @@ import MovieList from './components/MovieList'
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  
+
   const authenticateSession = async () => {
     const url = `${import.meta.env.VITE_API_BASE_URL}/authentication`
     const options = {
@@ -31,7 +31,15 @@ const App = () => {
   return (
     <div className='App'>
       {isAuthenticated ? (
-        <MovieList />
+        <>
+          <header>
+            <h1>Flixster</h1>
+            <p>Browse current movies!</p>
+          </header>
+          <nav></nav>
+          <MovieList />
+          <footer></footer>
+        </>
       ) : (
         <p>Please check the API authentication requests.</p>
       )}

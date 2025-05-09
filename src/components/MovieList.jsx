@@ -3,9 +3,10 @@ import MovieCard from "./MovieCard"
 
 const MovieList = () => {
   const [movies, setMovies] = useState([])
-  const getMovieData = async () => {
+  const [page, setPage] = useState(1)
+  const fetchMovieData = async () => {
     const url =
-      `${import.meta.env.VITE_API_BASE_URL}/movie/now_playing?language=en-US&page=1`
+      `${import.meta.env.VITE_API_BASE_URL}/movie/now_playing?language=en-US&page=${page}`
     const options = {
       method: 'GET',
       headers: {
@@ -16,22 +17,30 @@ const MovieList = () => {
     try {
       const res = await fetch(url, options)
       const data = await res.json()
-      console.log(data)
-      setMovies(data.results)
+      const updatedMovies = [...movies, ...data.results]
+      setMovies(updatedMovies)
+      setPage(page + 1)
     } catch (error) {
       console.error(error)
     }
   }
 
   useEffect(() => {
-    getMovieData()
+    fetchMovieData()
   }, [])
+
+  const loadMoreMovies = async () => {
+    
+  }
 
   return (
     <div className='movie-list'>
       {movies.map(movie => (
         <MovieCard movie={movie} key={movie.id} />
       ))}
+      <div className='movie-list--load-more-ctnr'>
+        <div className='movie-list--load-more-btn' onClick={fetchMovieData}>Load More</div>
+      </div>
     </div>
   )
 }
