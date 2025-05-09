@@ -230,7 +230,7 @@
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #808000;
+  background-color: #806200;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -281,6 +281,25 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #808000;
+  background-color: #806200;
   opacity: 1.0;
+}
+
+.section {
+  width: 100%;
+  padding: 50px 0 75px;
+}
+
+.section--about {
+  background: #000080;
+  color: white;
+}
+
+.section--contact {
+  background: #806200;
+  color: white;
+}
+
+.section--contact a {
+  color: #bdbdff;
 }

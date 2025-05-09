@@ -5,6 +5,8 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 import MovieModal from './components/MovieModal'
+import About from './components/About'
+import Contact from './components/Contact'
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -89,6 +91,8 @@ const App = () => {
             modalVisible={modalVisible}
             toggleModal={toggleModal}
           />
+          <About />
+          <Contact />
           <Footer />
         </>
       ) : (
